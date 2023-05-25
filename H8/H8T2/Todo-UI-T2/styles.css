@@ -1,0 +1,57 @@
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+#container {
+    width: 420px;
+    background: rgb(16, 233, 96);
+    background: linear-gradient(90deg, rgba(16, 233, 96, 1) 0%, rgba(21, 156, 231, 1) 56%, rgba(0, 212, 255, 1) 100%);
+    border-radius: 3px;
+    padding: 0px 15px 0px 15px;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+h1 {
+    background: rgb(12, 175, 72);
+    background: linear-gradient(270deg, rgba(12, 175, 72, 1) 0%, rgba(17, 123, 182, 1) 51%, rgba(0, 152, 182, 1) 100%);
+    text-align: center;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+ul {
+    list-style-type: square;
+    margin: 20px 0 20px 0;
+}
+
+input[type=text] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 300px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+button {
+    border: 1px solid #ccc;
+    margin-left: 15px;
+    padding: 5px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete {
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.edit {
+    cursor: pointer;
+    color: blue;
+    font-weight: bold;
+}

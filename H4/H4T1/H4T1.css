@@ -1,0 +1,36 @@
+#houses {
+    width: 600px;
+    height: 800px;
+    float: left;
+    overflow: auto;
+    margin: 10px;
+}
+
+.houseContainer {
+    display: block;
+    border: 1px solid;
+    border-color: dimgray;
+    width: 570px;
+    height: 165px;
+    font-size: 12px;
+    font-family: Verdana, sans-serif;
+    margin: 2px;
+    padding: 2px;
+}
+
+.houseImage {
+    width: 225px;
+    height: 160px;
+    float: left;
+    margin: 2px;
+}
+
+p.header {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+p.text {
+    font-style: italic;
+    font-size: 10px;
+}

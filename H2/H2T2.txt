@@ -1,0 +1,21 @@
+const myFunctionWithCallback = (p1, p2, callback) => {
+  return callback(p1, p2)
+}
+
+const myFunc = (p1, p2) => `Pitsa ${p1} ja ${p2}`
+const result = myFunctionWithCallback('kinkulla', 'juustolla', myFunc)
+console.log(result)
+
+Ohjelman suoritusjärjestys:
+6 -> 1 -> 2 -> 5 -> 2 -> 6 -> 7
+
+1) Ohjelman toddellinen suoritus alkaa riviltä "6", jossa myFunctionWithCallback on kutsettu 
+    kolmien parametrien mukana ('kinkulla"Pitsa kinkulla ja juustolla", 'juustolla', myFunc)
+2) Rivillä "1" myFunctionWithCallback nuolifunktion annetaan 3 parametia ('kinkulla', 'juustolla', myFunc)
+3) Rivillä "2" myFunctionWithCallback kutsuu callback kautta myFunc fuktiota ja antaa kaksi paremetria ('kinkulla', 'juustolla')
+4) Rivillä "5" myFunc funktio saa kaksi parametria ('kinkulla', 'juustolla') ja oman suorituksen jälkeen palauttaa tekstijono 
+    "Pitsa kinkulla ja juustolla"
+5) Rivillä "2" myFunctionWithCallback palauttaa tekstijono "Pitsa kinkulla ja juustolla"
+6) Rivillä "6" vakio "result" saa arvoksi tekstijono "Pitsa kinkulla ja juustolla"
+7) console.log-in kautta tulostetaan vakion "result" arvo ("Pitsa kinkulla ja juustolla") web-konsolille
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>H3T5</title>
+    <style>
+        section.area {
+            display: block;
+            width: 500px;
+            border-style: dashed;
+            padding: 0px 0px 50px 10px;
+            background-color: azure;
+
+        }
+
+        #resultArea {
+            display: block;
+            border-style: dashed;
+            margin: 10px 10px 0px 0px;
+            padding: 10px 10px 10px 10px;
+
+
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        p.clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="area">
+        <h3>Valitse juhlaväri:</h3>
+        <select id="colors" onchange="writeCode()">
+            <option id="color1" value="#FFFF00">Keltainen</option>
+            <option id="color2" value="#FF0000">Punainen</option>
+            <option id="color3" value="#008000">Vihrea</option>
+
+        </select>
+
+        <h3>Mikä juhla?</h3>
+
+        <form id="f">
+            <input type="text" id="inputText" onkeyup="writeText()" oninput="onlyLetters(this)"><br>
+            <button type="button" onclick="changeColor()">Vaihda valittu taustaväri</button>
+        </form>
+        <div id="resultArea">
+
+            <h3>Tulosalue</h3>
+            <p> Valittu: <span id="vari"></span> <br><br>
+                <span id="juhla"></span>
+            </p>
+
+        </div>
+    </section>
+
+    <script>
+        let color = document.getElementById("colors");
+        document.getElementById("vari").innerHTML = color.value;
+        document.getElementById("resultArea").style.backgroundColor = color.value;
+
+
+        function writeCode() {
+            let color = document.getElementById("colors");
+            document.getElementById("vari").innerHTML = color.value;
+
+        }
+
+        function changeColor() {
+            let color = document.getElementById("colors");
+            document.getElementById("resultArea").style.backgroundColor = color.value;
+        }
+
+        function writeText() {
+
+            let juhlaText = document.getElementById("inputText").value;
+            document.getElementById("juhla").innerHTML = (juhlaText);
+        }
+
+        function onlyLetters(event) {
+            let regex = /[0-9]/g;
+            event.value = event.value.replace(regex, "");
+
+        }
+
+    </script>
+</body>
+
+</html>

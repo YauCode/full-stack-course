@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>H3T1</title>
+</head>
+
+<body>
+
+    <section>
+
+        <a onclick="changeImage('kuva1.jpg')" href="#">KUVA1</a>
+        <a onclick="changeImage('kuva2.jpg')" href="#">KUVA2</a>
+        <a onclick="changeImage('kuva3.jpg')" href="#">KUVA3</a>
+
+    </section>
+    <img id="kuva" alt="" src="kuva1.jpg" style="max-width: 520px">
+
+    <script>
+        function changeImage(elem) {
+            let kuva = document.getElementById("kuva");
+            kuva.src = elem;
+        }
+
+    </script>
+</body>
+
+</html>

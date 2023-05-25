@@ -1,2 +1,2 @@
 # full-stack-course
-Full Stack Programming Course
+Exercises for Full Stack Programming Course

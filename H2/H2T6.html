@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>H2T6</title>
+    <style>
+        .container {
+            width: 420px;
+            height: 350px;
+            background-color: aliceblue;
+            border-radius: 3px;
+            padding: 0px 15px 0px 15px;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Vauhtilaskin</h1>
+        <form id="f">
+            <p>Tunnit: <input type="text" id="tunnit" size="10" value="0" /></p>
+            <p>Minuutit: <input type="text" id="minuutit" size="10" value="0" /></p>
+            <p>Sekunnit: <input type="text" id="sekunnit" size="10" value="0" /></p>
+            <p>Kilometrit: <input type="text" id="kilometrit" size="10" value="0" /></p>
+        </form>
+
+        <button onclick="getData(f.tunnit.value, f.minuutit.value, f.sekunnit.value, f.kilometrit.value)">Laske
+            vauhdit</button>
+
+        <p> <span id="outputKmh"></span> km/h</p>
+        <p><span id="outputMinkm"></span> min/km</p>
+
+
+
+
+
+        <script>
+
+            class Vauhtilaskin {
+                constructor(h, min, sec, km) {
+                    this.h = h;
+                    this.min = min;
+                    this.sec = sec;
+                    this.km = km;
+                }
+
+                get kmhpace() {
+                    return this.calcKmhPace();
+                }
+
+                get minkmpace() {
+                    return this.calcMinKmPace();
+                }
+
+                calcKmhPace() {
+                    let tunnit = parseInt(this.h) + (parseInt(this.min) * 60 + parseInt(this.sec)) / 3600;
+                    let kmh = (this.km / tunnit).toFixed(2);
+                    return kmh;
+                }
+
+                calcMinKmPace() {
+                    let sekunnit = parseInt(this.h) * 60 * 60 + parseInt(this.min) * 60 + parseInt(this.sec);
+                    this.sekunnitPerKm = sekunnit / this.km;
+
+                    let minutes = 0;
+
+                    while (this.sekunnitPerKm >= 60) {
+                        minutes++;
+                        this.sekunnitPerKm = this.sekunnitPerKm - 60;
+                    }
+                    this.sekunnitPerKm = Math.round(this.sekunnitPerKm);
+                    this.sekunnitPerKm = String('0' + this.sekunnitPerKm).slice(-2);
+                    return minutes + ":" + this.sekunnitPerKm;
+                }
+
+
+            }
+
+            function getData(h, min, sec, km) {
+                let vauh1 = new Vauhtilaskin(h, min, sec, km);
+                document.getElementById("outputKmh").innerHTML = (vauh1.kmhpace);
+                document.getElementById("outputMinkm").innerHTML = (vauh1.minkmpace);
+            }
+
+
+
+
+        </script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+use h7t4
+
+db.createCollection("cities")
+db.createCollection("students")
+db.createCollection("studentgrades")
+db.createCollection("courses")
+
+
+db.cities.insertMany([
+    {
+        cityID: 1,
+        cityname: "Turku",
+        population: 190000
+        
+},
+    {
+        cityID: 2,
+        cityname: "Tampere",
+        population: 230000
+},
+
+    {
+        cityID: 3,
+        cityname: "Lahti",
+        population: 120000
+}
+])
+
+
+db.courses.insertMany([
+{courseID:1,coursename:"Ohjelmointi",credits:5},
+{courseID:2,coursename:"Tietokannat",credits:4},
+{courseID:3,coursename:"Ruotsi",credits:3},
+])
+
+
+db.students.insertMany([
+{studentID:2001,lastname:"Guru",firstname:"Ken",birthdate:"2001-11-11",eyecolor:"Ruskea",incomes:12010.12,taxrate:5.1,hometown:1},
+{studentID:2002,lastname:"Sarus",firstname:"Tino",birthdate:"2002-11-11",eyecolor:"Ruskea",incomes:14010.22,taxrate:6.2,hometown:1},
+{studentID:2003,lastname:"Tiainen",firstname:"Sini",birthdate:"2003-11-11",eyecolor:"Sininen",incomes:16010.32,taxrate:7.3,hometown:1},
+{studentID:2004,lastname:"Vainio",firstname:"Vilja",birthdate:"2004-11-11",eyecolor:"Sininen",incomes:0.00,taxrate:0.0,hometown:3},
+{studentID:2005,lastname:"Vainio",firstname:"Elo",birthdate:"2005-11-11",eyecolor:"Sininen",incomes:0.00,taxrate:0.0,hometown:3},
+{studentID:2006,lastname:"Rahainen",firstname:"Muu",birthdate:"2006-11-11",eyecolor:"Harmaa",incomes:13010.12,taxrate:5.8,hometown:2},
+{studentID:2007,lastname:"Alainen",firstname:"Kim",birthdate:"2007-11-11",eyecolor:null,incomes:18010.12,taxrate:8.8,hometown:2},
+{studentID:2008,lastname:"Ana",firstname:"Ruut",birthdate:"2008-11-11",eyecolor:null,incomes:20010.12,taxrate:9.9,hometown:null}])
+
+
+db.studentgrades.insertMany([
+{studentID:2001,courseID:1,date_created:"2018-11-11",grade:5},
+{studentID:2001,courseID:2,date_created:"2019-11-11",grade:5},
+{studentID:2001,courseID:3,date_created:"2020-11-11",grade:5},
+{studentID:2002,courseID:1,date_created:"2018-11-11",grade:4},
+{studentID:2002,courseID:2,date_created:"2019-11-11",grade:4},
+{studentID:2002,courseID:3,date_created:"2020-11-11",grade:4},
+{studentID:2003,courseID:1,date_created:"2018-11-11",grade:3},
+{studentID:2003,courseID:2,date_created:"2019-11-11",grade:4},
+{studentID:2003,courseID:3,date_created:"2020-11-11",grade:4},
+{studentID:2004,courseID:3,date_created:"2020-11-11",grade:1},
+{studentID:2005,courseID:3,date_created:"2020-11-11",grade:1},
+{studentID:2006,courseID:1,date_created:"2018-11-11",grade:2},
+{studentID:2006,courseID:2,date_created:"2019-11-11",grade:2},
+{studentID:2006,courseID:3,date_created:"2020-11-11",grade:3},
+{studentID:2007,courseID:1,date_created:"2018-11-11",grade:3},
+{studentID:2007,courseID:2,date_created:"2019-11-11",grade:4},
+{studentID:2008,courseID:1,date_created:"2018-11-11",grade:4},
+{studentID:2008,courseID:2,date_created:"2019-11-11",grade:5}])
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+KYSELYT
+
+KYSELY 1:
+db.cities.find({})
+{
+  _id: ObjectId("6404e67667ee0220476602fb"),
+  cityID: 1,
+  cityname: 'Turku',
+  population: 190000
+}
+{
+  _id: ObjectId("6404e67667ee0220476602fc"),
+  cityID: 2,
+  cityname: 'Tampere',
+  population: 230000
+}
+{
+  _id: ObjectId("6404e67667ee0220476602fd"),
+  cityID: 3,
+  cityname: 'Lahti',
+  population: 120000
+}
+
+
+
+KYSELY 2:
+db.students.find( { incomes: {$gte: 14000 } },{ lastname: 1, firstname: 1, incomes:1 } ).sort( {incomes: -1 } )
+{
+  _id: ObjectId("6404e8a267ee022047660308"),
+  lastname: 'Ana',
+  firstname: 'Ruut',
+  incomes: 20010.12
+}
+{
+  _id: ObjectId("6404e8a267ee022047660307"),
+  lastname: 'Alainen',
+  firstname: 'Kim',
+  incomes: 18010.12
+}
+{
+  _id: ObjectId("6404e8a267ee022047660303"),
+  lastname: 'Tiainen',
+  firstname: 'Sini',
+  incomes: 16010.32
+}
+{
+  _id: ObjectId("6404e8a267ee022047660302"),
+  lastname: 'Sarus',
+  firstname: 'Tino',
+  incomes: 14010.22
+}
+
+
+KYSELY 3:
+db.students.find( {$and:[{ hometown: 3 },{ eyecolor: "Sininen" }]},{ lastname: 1, firstname: 1, eyecolor:1, hometown:1 } ).sort( {lastname: 1 }, {firstname: 1 } )
+{
+  _id: ObjectId("6404e8a267ee022047660304"),
+  lastname: 'Vainio',
+  firstname: 'Vilja',
+  eyecolor: 'Sininen',
+  hometown: 3
+}
+{
+  _id: ObjectId("6404e8a267ee022047660305"),
+  lastname: 'Vainio',
+  firstname: 'Elo',
+  eyecolor: 'Sininen',
+  hometown: 3
+}
+
+
+
+KYSELY 4:
+db.students.aggregate([
+    {
+        $group:{
+            _id:"$eyecolor",
+            AverageIncome: {$avg: "$incomes"}
+    }
+    },
+    {
+        $sort:{AverageIncome:-1}
+    }
+])
+{
+  _id: null,
+  AverageIncome: 19010.12
+}
+{
+  _id: 'Ruskea',
+  AverageIncome: 13010.17
+}
+{
+  _id: 'Harmaa',
+  AverageIncome: 13010.12
+}
+{
+  _id: 'Sininen',
+  AverageIncome: 5336.7733333333335
+}

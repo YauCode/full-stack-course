@@ -1,0 +1,12 @@
+Arvioitu tulos jonka ohjelma tulostaa web-konsolille:
+
+Task1 to execution...
+Task2 to execution...
+Task3 to execution...
+Last code line executed!
+Task3 finished!
+Task1 finished!
+Task2 finished!
+
+SELVITYS! "Task3 finished!" tulostetaan ensimmäisenä kolmesta, koska sen suoritusviive on pienin -
+vain 500 ms, kun taas muilla on 2000 ms.

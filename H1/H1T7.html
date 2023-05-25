@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>H1T7</title>
+</head>
+<body>
+<h1>Onko karkausvuosi?</h1>
+
+ <form id="f">
+  Syötä vuosi<br>
+  <input type="text" id="vuosi"><br>
+  
+  <button type="button" onclick="printResult(parseInt(f.vuosi.value))">
+  Tarkista vuosi
+  </button>
+ </form>
+
+ <div id="results"></div>
+  <script>   
+
+  function printResult(y) {
+    
+    var div = document.getElementById("results");
+    
+    if (checkYear(y)==true){
+      div.innerHTML = "<h3>" + y + " -> on karkausvuosi </h3>";
+      
+    } else {
+      div.innerHTML = "<h3>" + y + " -> ei ole karkausvuosi </h3>";
+      
+    }
+    
+  } 
+    
+    function checkYear(x){
+      
+      if (x%4==0 ){
+        
+        if (x%100==0) {
+          if(x%400==0) {
+            return true;
+          }
+          return false;
+        } else {
+          return true;
+        }
+       
+ 
+      } else {
+        return false;
+      }
+      
+     
+    }
+
+  </script>
+  
+</body>
+</html>

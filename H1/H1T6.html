@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>H1T6</title>
+</head>
+<body>
+  <h3>Javascript-taulukon läpikäynti</h3>
+  <p> for- ja for...of silmukoilla</p>
+  <hr>
+  <p id="result"></p>
+  
+  <script>
+    
+    let taulukko = [11, 22, 33, 44];
+    let summa = 0;
+    let lukumaara = 0;
+    let keskiarvo;
+    let tulosrivit = '';
+    
+    //tulosrivit
+    for (i=0;i<taulukko.length;i++) {
+      tulosrivit+="taulukko["+i+"]="+taulukko[i]+"</br>";
+      
+    }
+    
+    //Lukumaara ja summa
+    for (let value of taulukko) {
+      lukumaara +=1;
+      summa +=value;
+    }
+    
+    //keskiarvo
+    keskiarvo=summa/taulukko.length;
+    keskiarvo=keskiarvo.toFixed(1);
+    
+    
+    // Tulokset
+    let tulos= "Taulukon alkiot ovat"  + "</br>"+ "</br>"+
+                tulosrivit + "</br>" +
+                "Taulukon alkioiden" + "</br>"+ "</br>"+
+                "lukumäärä: " + lukumaara + "</br>"+
+                "summa: " + summa + "</br>"+
+                "keskiarvo: " + keskiarvo;
+        
+    document.getElementById("result").innerHTML=tulos;
+  
+  </script>
+ 
+
+</body>
+</html>

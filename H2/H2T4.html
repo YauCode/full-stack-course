@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>H2T4</title>
+</head>
+
+<body>
+    <h1 id="messages">OMG - Lady Gaga start singing!</h1>
+
+    <script>
+        let messages = document.getElementById("messages");
+
+        function concertLog(fireCount) {
+
+            if (fireCount > 0) {
+                setTimeout(() => {
+                    messages.innerHTML += "<br>" + "NICE - fireworks!";
+                    concertLog(fireCount - 1);
+                }, 5000);
+
+            }
+            else {
+
+                setTimeout(() => { messages.innerHTML += "<br>" + "WOW - It was best concert in my life... " }, 2000)
+            }
+
+        }
+
+        concertLog(3);
+
+    </script>
+</body>
+
+</html>

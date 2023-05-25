@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>H3T4</title>
+</head>
+
+<body>
+    <h1>SimpleToDo</h1>
+    <p>ToDo:</p>
+    <input type="text" id="tasktext"><br><br>
+    <button onclick="addTask()">Lisää</button>
+    <button onclick="clearList()">Tyhjä lista</button>
+    <ul id="todolist"></ul>
+
+    <script>
+
+        let todoList = document.getElementById("todolist");
+        function addTask() {
+
+            let taskText = document.getElementById("tasktext");
+
+            let linode = document.createElement('li');
+            let litext = document.createTextNode(taskText.value);
+            // Event Listener 
+            linode.addEventListener("click", deleteTask, false)
+
+            linode.appendChild(litext);
+            todoList.appendChild(linode);
+
+            taskText.value = '';
+
+        }
+
+        function clearList() {
+            while (todoList.hasChildNodes()) {
+                todoList.removeChild(todoList.firstChild);
+            }
+
+        }
+
+        function deleteTask(event) {
+            event.target.remove();
+
+        }
+
+    </script>
+</body>
+
+</html>

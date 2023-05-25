@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>H2T5</title>
+</head>
+
+<body>
+  <h1>Tehtävä H2T5</h1>
+  <h1>OPEN CONSOLE PLEASE!</h1>
+
+  <script>
+
+    function Person(name, age, phone, email) {
+      this.name = name;
+      this.age = age;
+      this.phone = phone;
+      this.email = email;
+      this.NewAge = () => { this.age++ };
+
+    }
+
+    var pekka = new Person("Pekka Pekkanen", 11, "045 1111111", "pekka.pekkanen@gmail.com");
+    var mikko = new Person("Mikko Mikkonen", 22, "050 2222222", "mikko.mikkonen@gmail.com");
+    var jukka = new Person("Jukka Jukkanen", 33, "014 3333333", "jukka.jukkanen@gmail.com");
+
+    console.log("Name: " + pekka.name + " Age: " + pekka.age + " Phone: " + pekka.phone + " Email: " + pekka.email);
+    console.log("Name: " + mikko.name + " Age: " + mikko.age + " Phone: " + mikko.phone + " Email: " + mikko.email);
+    console.log("Name: " + jukka.name + " Age: " + jukka.age + " Phone: " + jukka.phone + " Email: " + jukka.email);
+
+    pekka.NewAge();
+    console.log(pekka.name + " new age is " + pekka.age);
+
+    pekka.NewAge();
+    console.log(mikko.name + " new age is " + mikko.age);
+
+    pekka.NewAge();
+    console.log(jukka.name + " new age is " + jukka.age);
+
+
+
+  </script>
+
+</body>
+
+</html>
